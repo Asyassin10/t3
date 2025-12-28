@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ClientEsoftController;
+use App\Http\Controllers\Api\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// Subscription routes (Cashier - monthly plans)
+Route::middleware('auth:sanctum')->prefix('/subscription')->group(function () {
+    Route::get('/plans', [SubscriptionController::class, 'plans'])->name('subscription.plans');
+    Route::get('/status', [SubscriptionController::class, 'status'])->name('subscription.status');
+    Route::post('/checkout', [SubscriptionController::class, 'createCheckout'])->name('subscription.checkout');
+    Route::post('/cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
+    Route::post('/resume', [SubscriptionController::class, 'resume'])->name('subscription.resume');
+    Route::get('/billing-portal', [SubscriptionController::class, 'billingPortal'])->name('subscription.billingPortal');
 });
 
 Route::middleware('apikey')->group(function () {

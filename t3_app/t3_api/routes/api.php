@@ -50,14 +50,8 @@ Route::post("/reset-code", [
     "resetPassword",
 ])->name("resetPassword");
 //Route::post("/reset_password", [AuthController::class, "resetPassword"])->name("resetPassword");
-// time_sheet routes
-Route::middleware(["auth:sanctum", "setLocale", "check.paye"])->group(function () {
-
-    Route::get(
-        uri: "/global-search",
-        action: [SearchController::class, "GlobalSearch"],
-    )->name(name: "GlobalSearch");
-
+// Auth-only routes (no payment check required)
+Route::middleware(["auth:sanctum", "setLocale"])->group(function () {
     Route::post("/logout", [AuthController::class, "logout"])->name("logout");
     Route::get("/me", [AuthController::class, "me"])->name("me");
     Route::get("/profile", [ProfileController::class, "showProfile"])->name(
@@ -71,6 +65,15 @@ Route::middleware(["auth:sanctum", "setLocale", "check.paye"])->group(function (
         ProfileController::class,
         "updatePassword",
     ])->name("updatePassword");
+});
+
+// Business logic routes (requires active subscription)
+Route::middleware(["auth:sanctum", "setLocale", "check.paye"])->group(function () {
+
+    Route::get(
+        uri: "/global-search",
+        action: [SearchController::class, "GlobalSearch"],
+    )->name(name: "GlobalSearch");
 
 
 

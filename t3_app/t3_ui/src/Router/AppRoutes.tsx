@@ -33,6 +33,7 @@ import JourFeries from "@/Screens/JourFeries";
 import SettingsProfile from "@/Screens/settings/profile";
 import CommercialData from "@/Screens/settings/CommercialData/CommercialData";
 import SubscriptionRequired from "@/Screens/SubscriptionRequired";
+import SubscriptionSuccess from "@/Screens/SubscriptionSuccess";
 function AppRoutes() {
   return (
     <Routes>
@@ -125,7 +126,8 @@ function AppRoutes() {
       <Route path="*" element={<Page404 />} />
       <Route path="subscription_ended" element={<SubscriptionEnded />} />
       <Route path="/activate_account/:token" element={<ActivateAccount />} />
-        <Route path="/subscription-required" element={<SubscriptionRequired />} />
+      <Route path="/subscription-required" element={<SubscriptionRequired />} />
+      <Route path="/subscription-success" element={<SubscriptionSuccess />} />
 
     </Routes>
   );
