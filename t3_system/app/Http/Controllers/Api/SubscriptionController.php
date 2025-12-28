@@ -9,57 +9,27 @@ use Illuminate\Http\Request;
 class SubscriptionController extends Controller
 {
     /**
-     * Get available monthly subscription plans
+     * Get available monthly subscription plans from database
      */
     public function plans()
     {
-        // Get plans from database or return hardcoded monthly plans
-        $plans = [
-            [
-                'id' => 'basic_monthly',
-                'name' => 'Basic Plan',
-                'price' => 29.99,
-                'currency' => 'usd',
+        // Load plans from subscription_plans table
+        $dbPlans = SubscriptionPlan::with('modules')->get();
+
+        $plans = $dbPlans->map(function ($plan) {
+            return [
+                'id' => $plan->identifier,
+                'name' => $plan->subscription_plan_name,
+                'price' => 29.99, // Default price, can be fetched from Stripe API
+                'currency' => env('CASHIER_CURRENCY', 'usd'),
                 'interval' => 'month',
-                'stripe_price_id' => env('STRIPE_BASIC_MONTHLY_PRICE_ID'),
-                'features' => [
-                    'Time Tracking (CRA)',
-                    'Project Management',
-                    'Up to 10 users',
-                    'Basic Support',
+                'stripe_price_id' => $plan->stripe_id,
+                'features' => $plan->modules->pluck('name')->toArray() ?: [
+                    'Access to all features',
+                    'Email support',
                 ],
-            ],
-            [
-                'id' => 'professional_monthly',
-                'name' => 'Professional Plan',
-                'price' => 79.99,
-                'currency' => 'usd',
-                'interval' => 'month',
-                'stripe_price_id' => env('STRIPE_PROFESSIONAL_MONTHLY_PRICE_ID'),
-                'features' => [
-                    'Everything in Basic',
-                    'Absence Management',
-                    'Invoice Generation',
-                    'Up to 50 users',
-                    'Priority Support',
-                ],
-            ],
-            [
-                'id' => 'enterprise_monthly',
-                'name' => 'Enterprise Plan',
-                'price' => 199.99,
-                'currency' => 'usd',
-                'interval' => 'month',
-                'stripe_price_id' => env('STRIPE_ENTERPRISE_MONTHLY_PRICE_ID'),
-                'features' => [
-                    'Everything in Professional',
-                    'Unlimited users',
-                    'Advanced Analytics',
-                    'Custom Integrations',
-                    'Dedicated Support',
-                ],
-            ],
-        ];
+            ];
+        });
 
         return response()->json([
             'plans' => $plans,

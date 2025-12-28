@@ -1,6 +1,7 @@
 import Axios from "axios";
 
-const T3_SYSTEM_API_URL = "http://127.0.0.1:8000/api";
+// Use port 8234 for t3_system (matches docker-compose)
+const T3_SYSTEM_API_URL = "http://127.0.0.1:8234/api";
 
 const t3_system_client = Axios.create({
   baseURL: T3_SYSTEM_API_URL,

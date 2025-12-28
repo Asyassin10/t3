@@ -20,9 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Subscription routes (Cashier - monthly plans)
+// Public subscription plans endpoint (no auth required)
+Route::get('/subscription/plans', [SubscriptionController::class, 'plans'])->name('subscription.plans');
+
+// Subscription routes (Cashier - monthly plans - requires authentication)
 Route::middleware('auth:sanctum')->prefix('/subscription')->group(function () {
-    Route::get('/plans', [SubscriptionController::class, 'plans'])->name('subscription.plans');
     Route::get('/status', [SubscriptionController::class, 'status'])->name('subscription.status');
     Route::post('/checkout', [SubscriptionController::class, 'createCheckout'])->name('subscription.checkout');
     Route::post('/cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
