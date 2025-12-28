@@ -40,10 +40,20 @@ class CheckSubscriptionPaye
                     'last_checked_at' => now(),
                 ]);
 
+                // Check if account is active
+                if (isset($data['is_active']) && $data['is_active'] === false) {
+                    return response()->json([
+                        'error' => 'Account deactivated',
+                        'message' => 'Your account has been deactivated. Please contact support.',
+                        'require_subscription' => true
+                    ], 402);
+                }
+
+                // Check if subscription is paid
                 if (isset($data['paye']) && $data['paye'] === true) {
                     return $next($request);
                 }
-                
+
                 // Subscription not paid
                 return response()->json([
                     'error' => 'Subscription not active',

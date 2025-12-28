@@ -72,14 +72,13 @@ class ClientEsoftController extends Controller
         if (!$apiKey) {
                 return response()->json([
                     'paye' => false,
+                    'is_active' => false,
                     'message' => 'API key is required'
                 ], 400);
             }
 
-        $paye = $this->subscriptionService->checkSubscriptionStatus($apiKey);
+        $status = $this->subscriptionService->checkSubscriptionStatus($apiKey);
 
-        return response()->json([
-            'paye' => $paye,
-        ]);
+        return response()->json($status);
     }
 }
