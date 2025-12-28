@@ -114,7 +114,7 @@ export const Pricing = () => {
               </CardTitle>
               <div>
                 <span className="text-3xl font-bold">${pricing.price}</span>
-                <span className="text-muted-foreground"> /month</span>
+                <span className="text-muted-foreground"> /mois</span>
               </div>
 
               <CardDescription>{pricing.description}</CardDescription>
