@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api_client from '../axios/api_client';
+import t3_system_client from '../axios/t3_system_client';
 import { CheckCircle, XCircle } from 'lucide-react';
 
 interface Plan {
@@ -24,7 +24,7 @@ const SubscriptionRequired: React.FC = () => {
 
   const loadPlans = async () => {
     try {
-      const response = await api_client.get('/subscription/plans');
+      const response = await t3_system_client.get('/subscription/plans');
       setPlans(response.data.plans);
     } catch (err) {
       setError('Failed to load subscription plans');
@@ -34,7 +34,7 @@ const SubscriptionRequired: React.FC = () => {
     }
   };
 
-  const handleSubscribe = async (priceId: string) => {
+  const handleSubscribe = async (priceId: string) {
     if (!priceId) {
       setError('This plan is not configured yet. Please contact support.');
       return;
@@ -44,7 +44,7 @@ const SubscriptionRequired: React.FC = () => {
     setError(null);
 
     try {
-      const response = await api_client.post('/subscription/checkout', {
+      const response = await t3_system_client.post('/subscription/checkout', {
         price_id: priceId,
       });
 

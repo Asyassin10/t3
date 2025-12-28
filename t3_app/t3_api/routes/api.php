@@ -13,7 +13,6 @@ use App\Http\Controllers\Api\ManagerController;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Api\TimeTrackingController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\ClientB2BController;
 use App\Http\Controllers\ClientEsoftController;
 use App\Http\Controllers\ConsultantController;
@@ -66,16 +65,6 @@ Route::middleware(["auth:sanctum", "setLocale"])->group(function () {
         ProfileController::class,
         "updatePassword",
     ])->name("updatePassword");
-
-    // Subscription routes (accessible without active subscription)
-    Route::prefix("/subscription")->group(function () {
-        Route::get("/status", [SubscriptionController::class, "status"])->name("subscription.status");
-        Route::get("/plans", [SubscriptionController::class, "plans"])->name("subscription.plans");
-        Route::post("/checkout", [SubscriptionController::class, "createCheckout"])->name("subscription.checkout");
-        Route::post("/cancel", [SubscriptionController::class, "cancel"])->name("subscription.cancel");
-        Route::post("/resume", [SubscriptionController::class, "resume"])->name("subscription.resume");
-        Route::get("/billing-portal", [SubscriptionController::class, "billingPortal"])->name("subscription.billingPortal");
-    });
 });
 
 // Business logic routes (requires active subscription)

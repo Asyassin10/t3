@@ -3,68 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\SubscriptionPlan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
 {
     /**
-     * Get the current user's subscription status
-     */
-    public function status(Request $request)
-    {
-        $user = $request->user();
-
-        $subscribed = $user->subscribed('default');
-        $subscription = $user->subscription('default');
-
-        return response()->json([
-            'subscribed' => $subscribed,
-            'subscription' => $subscription ? [
-                'stripe_status' => $subscription->stripe_status,
-                'ends_at' => $subscription->ends_at,
-                'on_trial' => $subscription->onTrial(),
-                'on_grace_period' => $subscription->onGracePeriod(),
-                'canceled' => $subscription->canceled(),
-            ] : null,
-        ]);
-    }
-
-    /**
-     * Create a checkout session for subscription
-     */
-    public function createCheckout(Request $request)
-    {
-        $request->validate([
-            'price_id' => 'required|string',
-        ]);
-
-        $user = $request->user();
-
-        try {
-            $checkout = $user->newSubscription('default', $request->price_id)
-                ->checkout([
-                    'success_url' => config('app.frontend_url') . '/subscription-success?session_id={CHECKOUT_SESSION_ID}',
-                    'cancel_url' => config('app.frontend_url') . '/subscription-required',
-                ]);
-
-            return response()->json([
-                'checkout_url' => $checkout->url,
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => 'Failed to create checkout session',
-                'message' => $e->getMessage(),
-            ], 500);
-        }
-    }
-
-    /**
-     * Get available subscription plans
+     * Get available monthly subscription plans
      */
     public function plans()
     {
-        // Define your monthly subscription plans
+        // Get plans from database or return hardcoded monthly plans
         $plans = [
             [
                 'id' => 'basic_monthly',
@@ -118,11 +67,80 @@ class SubscriptionController extends Controller
     }
 
     /**
+     * Get the current user's subscription status
+     */
+    public function status(Request $request)
+    {
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json([
+                'error' => 'Unauthenticated',
+            ], 401);
+        }
+
+        $subscribed = $user->subscribed('default');
+        $subscription = $user->subscription('default');
+
+        return response()->json([
+            'subscribed' => $subscribed,
+            'subscription' => $subscription ? [
+                'stripe_status' => $subscription->stripe_status,
+                'ends_at' => $subscription->ends_at,
+                'on_trial' => $subscription->onTrial(),
+                'on_grace_period' => $subscription->onGracePeriod(),
+                'canceled' => $subscription->canceled(),
+            ] : null,
+        ]);
+    }
+
+    /**
+     * Create a Stripe checkout session for subscription
+     */
+    public function createCheckout(Request $request)
+    {
+        $request->validate([
+            'price_id' => 'required|string',
+        ]);
+
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json([
+                'error' => 'Unauthenticated',
+            ], 401);
+        }
+
+        try {
+            $checkout = $user->newSubscription('default', $request->price_id)
+                ->checkout([
+                    'success_url' => env('FRONTEND_URL', 'http://localhost:5177') . '/subscription-success?session_id={CHECKOUT_SESSION_ID}',
+                    'cancel_url' => env('FRONTEND_URL', 'http://localhost:5177') . '/subscription-required',
+                ]);
+
+            return response()->json([
+                'checkout_url' => $checkout->url,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Failed to create checkout session',
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
      * Cancel the current subscription
      */
     public function cancel(Request $request)
     {
         $user = $request->user();
+
+        if (!$user) {
+            return response()->json([
+                'error' => 'Unauthenticated',
+            ], 401);
+        }
 
         if (!$user->subscribed('default')) {
             return response()->json([
@@ -144,6 +162,12 @@ class SubscriptionController extends Controller
     {
         $user = $request->user();
 
+        if (!$user) {
+            return response()->json([
+                'error' => 'Unauthenticated',
+            ], 401);
+        }
+
         if (!$user->subscription('default')->onGracePeriod()) {
             return response()->json([
                 'error' => 'No subscription to resume',
@@ -164,9 +188,15 @@ class SubscriptionController extends Controller
     {
         $user = $request->user();
 
+        if (!$user) {
+            return response()->json([
+                'error' => 'Unauthenticated',
+            ], 401);
+        }
+
         try {
             $url = $user->billingPortalUrl(
-                config('app.frontend_url') . '/app'
+                env('FRONTEND_URL', 'http://localhost:5177') . '/app'
             );
 
             return response()->json([
