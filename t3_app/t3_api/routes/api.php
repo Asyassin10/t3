@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\JourferiersController;
 use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\ManagerController;
 use App\Http\Controllers\Api\ModuleController;
+use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\TimeTrackingController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\ClientB2BController;
@@ -65,6 +66,9 @@ Route::middleware(["auth:sanctum", "setLocale"])->group(function () {
         ProfileController::class,
         "updatePassword",
     ])->name("updatePassword");
+
+    // Subscription plans proxy (no payment check required)
+    Route::get("/subscription/plans", [SubscriptionController::class, "getPlans"])->name("subscription.plans");
 });
 
 // Business logic routes (requires active subscription)

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import t3_system_client from '../axios/t3_system_client';
+import api_client from '../axios/api_client';
 import { XCircle } from 'lucide-react';
 
 interface Plan {
@@ -23,7 +23,7 @@ const SubscriptionRequired: React.FC = () => {
 
   const loadPlans = async () => {
     try {
-      const response = await t3_system_client.get('/subscription/plans');
+      const response = await api_client.get('/subscription/plans');
       setPlans(response.data.plans);
     } catch (err) {
       setError('Échec du chargement des plans d\'abonnement');

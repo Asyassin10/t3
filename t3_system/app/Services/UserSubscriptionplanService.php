@@ -20,18 +20,33 @@ class UserSubscriptionplanService
 
         }
     }
-    public function checkSubscriptionStatus(string $apiKey): bool
+    public function checkSubscriptionStatus(string $apiKey): array
     {
         $client = AppClientEnvirenement::where('app_api_key', $apiKey)->first();
 
         if (!$client) {
-            return false;
+            return [
+                'paye' => false,
+                'is_active' => false,
+            ];
+        }
+
+        // Check if account is active
+        $isActive = (bool) ($client->is_active ?? true);
+        if (!$isActive) {
+            return [
+                'paye' => false,
+                'is_active' => false,
+            ];
         }
 
         // If no subscription dates, return false
         if (!$client->user_subscriptionplan_date_start || !$client->user_subscriptionplan_date_end) {
             $this->updatePaymentStatus($client, false);
-            return false;
+            return [
+                'paye' => false,
+                'is_active' => $isActive,
+            ];
         }
 
         $now = Carbon::now();
@@ -40,11 +55,17 @@ class UserSubscriptionplanService
         // Check if subscription has expired
         if ($now->greaterThan($endDate)) {
             $this->updatePaymentStatus($client, false);
-            return false;
+            return [
+                'paye' => false,
+                'is_active' => $isActive,
+            ];
         }
 
         // Subscription is active - return current paye status
-        return (bool) $client->paye;
+        return [
+            'paye' => (bool) $client->paye,
+            'is_active' => $isActive,
+        ];
     }
         private function updatePaymentStatus(AppClientEnvirenement $client, bool $status): void
     {

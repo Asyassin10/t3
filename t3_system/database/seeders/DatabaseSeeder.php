@@ -18,5 +18,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // Create admin user for Filament
+        $this->call([
+            AdminUserSeeder::class,
+        ]);
     }
 }

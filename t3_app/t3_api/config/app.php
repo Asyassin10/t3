@@ -20,6 +20,7 @@ return [
 
     // Use t3_system service name for Docker inter-container communication
     'subscription_api_url' => env('SUBSCRIPTION_API_URL', 'http://t3_system/api/StatusPaye'),
+    't3_system_url' => env('T3_SYSTEM_URL', 'http://t3_system'),
 
     /*
     |--------------------------------------------------------------------------
