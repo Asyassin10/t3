@@ -17,7 +17,7 @@ services:
     build:
       context: ./t3_system
     ports:
-      - "8000:80"
+      - "8234:80"
       - "5577:5577"
     depends_on:
       - T3_mysql_service
