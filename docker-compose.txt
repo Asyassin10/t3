@@ -29,7 +29,7 @@ services:
     volumes:
       - ./t3_system:/var/www/html # Mount Laravel app's directory
     command: >
-      bash -c "composer install && php artisan migrate --force && php artisan init-database && npm install && npm run build && apache2-foreground"
+      bash -c "composer install && php artisan migrate --force && php artisan init-database && php artisan filament:assets && php artisan db:seed --class=AdminUserSeeder --force && npm install && npm run build && apache2-foreground"
     working_dir: /var/www/html
   t3_api:
     build:
