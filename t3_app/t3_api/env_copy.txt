@@ -60,7 +60,9 @@ VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 FRONTEND_URL_BASE_URL=http://localhost:4000
 
-
+# Subscription API - t3_system endpoint for checking payment status
+# Use service name for Docker, or localhost:8000 for local development
+SUBSCRIPTION_API_URL=http://t3_system/api/StatusPaye
 
 REDIS_HOST=T3_redis
 REDIS_PORT=6379

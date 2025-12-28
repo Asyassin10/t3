@@ -17,8 +17,9 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    
-    'subscription_api_url' => env('SUBSCRIPTION_API_URL', 'http://localhost:8234/api/StatusPaye'),
+
+    // Use t3_system service name for Docker inter-container communication
+    'subscription_api_url' => env('SUBSCRIPTION_API_URL', 'http://t3_system/api/StatusPaye'),
 
     /*
     |--------------------------------------------------------------------------
