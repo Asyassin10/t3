@@ -1,0 +1,66 @@
+services:
+    t3_app_mysql_service:
+        image: "mysql:latest"
+        restart: always
+        container_name: t3_app_mysql_service
+        expose:
+            - 3306
+        ports:
+            - "3443:3306"
+        volumes:
+            - "mysql_data:/var/lib/mysql"
+            - ./sql_docker_entry.sql.sql:/docker-entrypoint-initdb.d/init.sql:ro
+        environment:
+            MYSQL_ROOT_PASSWORD: my-secret-pw
+            TZ: 'UTC'
+        networks:
+            - t3_app_api_network
+    t3_app_phpmyadmin:
+        image: "phpmyadmin/phpmyadmin:latest"
+        container_name: t3_app_phpmyadmin
+        restart: always
+        ports:
+        - "8784:80"
+        environment:
+            PMA_HOST: t3_app_mysql_service
+            UPLOAD_LIMIT: 4G
+        depends_on:
+        - t3_app_mysql_service
+        networks:
+        - t3_app_api_network
+    t3_ui:  
+      build:
+        context: ./t3_ui
+      container_name: t3_ui
+      ports:
+        - "5377:5177"
+      networks:
+        - t3_app_api_network
+    t3_app_api:
+        build:
+            context: ./t3_api
+        ports:
+            - "8999:80"
+        depends_on:
+            - t3_app_mysql_service
+        container_name: t3_app_api
+        environment:
+            - APACHE_DOCUMENT_ROOT=/var/www/html/public
+            - TZ=UTC
+        networks:
+            - t3_app_api_network
+            - t3_system_t3_system_network
+        volumes:
+            - ./t3_api:/var/www/html
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+        command: [ "apache2-foreground" ]
+        working_dir: /var/www/html
+
+networks:
+    t3_app_api_network:
+        driver: bridge
+    t3_system_t3_system_network:
+        external: true
+volumes:
+    mysql_data:

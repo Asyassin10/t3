@@ -1,0 +1,24 @@
+meta {
+  name: Search
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://127.0.0.1:8999/api/global-search?name=s
+  body: none
+  auth: bearer
+}
+
+params:query {
+  name: s
+}
+
+auth:bearer {
+  token: 17|nlZXjZmupqvrj9nhcqjHJwr6v8ZcV7A6naT135CQ4c0e21fd
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

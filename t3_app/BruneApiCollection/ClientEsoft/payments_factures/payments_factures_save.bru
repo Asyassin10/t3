@@ -1,0 +1,28 @@
+meta {
+  name: payments_factures_save
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://127.0.0.1:8999/api/payments_factures/save
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: 11|iYGXP0Z4FupExoJowwtK5sGBRNXIX5LDabHbojIla4646324
+}
+
+body:json {
+  {
+    "amount":2222,
+    "payment_method":"cash",
+    "facture_id":3
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

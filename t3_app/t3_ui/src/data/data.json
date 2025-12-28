@@ -1,0 +1,120 @@
+{
+    "clientesoft": [
+      {
+        "id": "1",
+        "raison_social": "BTI",
+        "info": "18rue roau paris aaa"
+      },
+      {
+        "id": "04d1",
+        "raison_social": "CNB",
+        "info": "fgfghfgh"
+      }
+    ],
+    "managers": [
+      {
+        "id": "1",
+        "clientesoft_id": 1,
+        "nom": "Dupont",
+        "prenom": "Jean",
+        "mail": "jean.dupont@example.com",
+        "info": "Manager de BTI"
+      },
+      {
+        "id": "ca69",
+        "clientesoft_id": 1,
+        "nom": "Moutari",
+        "prenom": "Issaka Rabo",
+        "mail": "irmoutari@gmail.com",
+        "info": "fdfd"
+      }
+    ],
+    "consultants": [
+      {
+        "id": "1",
+        "managers_id": 1,
+        "nom": "Martin",
+        "prenom": "Paul",
+        "mail": "paul.martin@example.com",
+        "info": "Consultant pour Jean Dupont"
+      }
+    ],
+    "clientb2b": [
+      {
+        "id": "2",
+        "clientesoft_id": 1,
+        "raison_social": "client B2B 2",
+        "info": "Info Client B2B 2 ertrter"
+      },
+      {
+        "id": "c7d1",
+        "clientesoft_id": 1,
+        "raison_social": "hghjhj",
+        "info": "jkjkjklkml"
+      }
+    ],
+    "projets": [
+      {
+        "id": "f9b3",
+        "clientb2b_id": 2,
+        "libelle": "ertertyry",
+        "codeprojet": "PX123",
+        "duree": 1212,
+        "info": "GHJYYU"
+      },
+      {
+        "id": "4d9f",
+        "clientb2b_id": 2,
+        "libelle": "fsdfsds",
+        "codeprojet": "PX123",
+        "duree": 6,
+        "info": "dsddsdsds"
+      },
+      {
+        "id": "60aa",
+        "libelle": "",
+        "codeprojet": "PX123",
+        "duree": 0,
+        "info": ""
+      }
+    ],
+    "joursferies": [
+      {
+        "id": "1",
+        "libelle": "JOUR 1",
+        "date": "2023-04-27"
+      }
+    ],
+    "modules": [
+      {
+        "id": "1",
+        "clientesoft_id": 1,
+        "etat": 1,
+        "libelle": "Module A"
+      }
+    ],
+    "consultants_projets": [
+      {
+        "id": "1",
+        "projets_id": 1,
+        "consultants_id": 1,
+        "duree": 3
+      }
+    ],
+    "activites": [
+      {
+        "id": "1",
+        "consultants_projets_id": 1,
+        "mois": "Janvier",
+        "nbre_jour": 5,
+        "etat": "validé"
+      }
+    ],
+    "timing": [
+      {
+        "id": "1",
+        "activites_id": 1,
+        "datesaisie": "2023-01-01"
+    }
+    ]
+  }

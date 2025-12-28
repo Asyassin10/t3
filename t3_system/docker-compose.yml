@@ -1,0 +1,77 @@
+services:
+  t3_system_mysql_service:
+    image: "mysql:latest"
+    restart: always
+    container_name: t3_system_mysql_service
+    expose:
+      - 3306
+    ports:
+      - "3844:3306"
+    volumes:
+      - "mysql_data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+    networks:
+      - t3_system_network
+  t3_system:
+    build:
+      context: .
+    ports:
+      - "8234:80"
+      - "5577:5577"
+    depends_on:
+      - t3_system_mysql_service
+    container_name: t3_system
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    networks:
+      - t3_system_network
+    volumes:
+      - .:/var/www/html # Mount Laravel app's directory
+      - /var/www/html/public/build
+      - /var/www/html/node_modules
+      - /var/www/html/vendor
+    command: >
+      bash -c "
+      composer install &&
+      php artisan migrate --force &&
+      php artisan init-database &&
+      npm install &&
+      npm run build &&
+      php artisan queue:work --sleep=3 --tries=3 &
+      while true; do php artisan schedule:run --verbose --no-interaction; sleep 60; done &
+      apache2-foreground"
+    working_dir: /var/www/html
+
+  phpmyadmin:
+    image: "phpmyadmin/phpmyadmin:latest"
+    container_name: t3_system_phpmyadmin
+    restart: always
+    ports:
+      - "9898:80"
+    environment:
+      PMA_HOST: t3_system_mysql_service
+      UPLOAD_LIMIT: 4G
+    depends_on:
+      - t3_system_mysql_service
+    networks:
+      - t3_system_network
+
+  redis:
+    image: redis:latest
+    container_name: T3_redis
+    ports:
+      - "6400:6379"
+    networks:
+      - t3_system_network
+
+
+
+
+
+networks:
+  t3_system_network:
+    driver: bridge
+
+volumes:
+  mysql_data: null

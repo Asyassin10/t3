@@ -1,0 +1,20 @@
+meta {
+  name: GetClients
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://127.0.0.1:8999/api/client_b2b/get_all_client_b2b/0
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 3|xhGFNjGO9uErSWQGEVrdJ24iltShrmMk3EIJyGzgf773cee4
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

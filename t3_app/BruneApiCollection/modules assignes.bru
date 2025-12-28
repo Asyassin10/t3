@@ -1,0 +1,20 @@
+meta {
+  name: modules assignes
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://127.0.0.1:8999/api/modules/ListAccessibleModules
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 3|xhGFNjGO9uErSWQGEVrdJ24iltShrmMk3EIJyGzgf773cee4
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

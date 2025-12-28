@@ -1,0 +1,4 @@
+- Update Consultant
+- Delete Consultant
+- Reset Reference Consultant
+- Make Invoice content dynamic

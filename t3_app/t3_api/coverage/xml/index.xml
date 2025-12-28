@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <build time="Wed Dec 10 12:37:08 UTC 2025" phpunit="10.5.39" coverage="10.1.16">
+    <runtime name="PHP" version="8.3.27" url="https://www.php.net/"/>
+    <driver name="xdebug" version="3.4.5"/>
+  </build>
+  <project source="/home/zack/Documents/Driss/InternalProject/T3/T3/t3_app/t3_api/app/Http/Controllers">
+    <tests>
+      <test name="Tests\Feature\AbsenceControllerTest::test_create_absence_request_with_valid_data" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_create_absence_request_without_dates_fails" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_create_absence_request_with_invalid_date_format" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_create_absence_request_with_date_fin_before_date_debut" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_role_client_esoft_without_linked_record" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_role_client_esoft_with_absences" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_role_manager_with_absences" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_role_concultant_with_absences" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_get_list_of_absence_types" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_get_absence_with_invalid_input" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_get_absence_when_cra_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_get_absence_with_valid_data" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_get_all_absence_status" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_it_updates_the_absence_status" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_it_returns_not_found_when_absence_does_not_exist" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_it_validates_the_id_is_numeric" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_it_validates_the_status_is_enum" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_it_validates_missing_parameters" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_it_returns_user_not_found_when_no_client_esoft_associated_with_user" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_it_filters_absence_requests_based_on_selected_parameters" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_it_returns_all_absences_when_no_filters_are_provided" size="unknown" status="success"/>
+      <test name="Tests\Feature\AbsenceControllerTest::test_it_returns_filtered_absences_based_on_status" size="unknown" status="success"/>
+      <test name="Tests\Feature\ActivityControllerTest::test_it_returns_all_activities_as_json" size="unknown" status="success"/>
+      <test name="Tests\Feature\ActivityControllerTest::test_it_creates_an_activity_and_returns_json" size="unknown" status="success"/>
+      <test name="Tests\Feature\ActivityControllerTest::test_it_updates_an_activity_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ActivityControllerTest::test_it_fails_updating_non_existing_activity" size="unknown" status="success"/>
+      <test name="Tests\Feature\ActivityControllerTest::test_it_deletes_an_activity_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ActivityControllerTest::test_it_fails_to_delete_non_existing_activity" size="unknown" status="success"/>
+      <test name="Tests\Feature\AdminControllerTest::test_it_accepts_account_request_and_sends_activation_email" size="unknown" status="success"/>
+      <test name="Tests\Feature\AdminControllerTest::test_it_returns_error_for_invalid_email" size="unknown" status="success"/>
+      <test name="Tests\Feature\ApplicationDataControllerTest::test_get_application_data_returns_first_record" size="unknown" status="success"/>
+      <test name="Tests\Feature\ApplicationDataControllerTest::test_update_application_data_successfully_updates_record" size="unknown" status="success"/>
+      <test name="Tests\Feature\ApplicationDataControllerTest::test_update_application_data_fails_with_invalid_data" size="unknown" status="success"/>
+      <test name="Tests\Feature\ApplicationDataControllerTest::test_update_logo_successfully_updates_logo" size="unknown" status="success"/>
+      <test name="Tests\Feature\ApplicationDataControllerTest::test_update_logo_fails_with_invalid_file" size="unknown" status="success"/>
+      <test name="Tests\Feature\AuthControllerTest::test_it_should_return_validation_error_when_email_or_password_is_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\AuthControllerTest::test_it_should_return_error_when_credentials_are_invalid" size="unknown" status="success"/>
+      <test name="Tests\Feature\AuthControllerTest::test_login_success_client_esoft_user" size="unknown" status="success"/>
+      <test name="Tests\Feature\AuthControllerTest::test_login_failled_without_client_esoft" size="unknown" status="success"/>
+      <test name="Tests\Feature\AuthControllerTest::test_logout_success" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_create_b2b_client_validation_error" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_create_b2b_client_user_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_create_b2b_client_successful" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_it_returns_paginated_clients_for_valid_user" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_handles_empty_paginated_data_in_GetAllClientB2B" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_handles_non_existed_client_esoft_data" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_it_deletes_b2b_client_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_if_role_not_valid" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_client_esoft_can_filter_clients" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_it_returns_user_not_found_when_client_esoft_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_it_returns_paginated_clients_for_authenticated_client_esoft" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_it_returns_404_when_client_esoft_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_client_esoft_can_update_its_own_client_b2b" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_it_returns_404_when_client_esoft_is_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_it_returns_404_when_client_does_not_belong_to_user" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientB2BControllerTest::test_it_fails_validation_when_name_is_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientEsoftControllerTest::test_client_esoft_can_delete_own_client_b2b" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientEsoftControllerTest::test_it_returns_404_when_client_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientEsoftControllerTest::test_it_returns_403_when_user_is_not_owner" size="unknown" status="success"/>
+      <test name="Tests\Feature\ClientEsoftControllerTest::test_it_returns_500_when_service_throws_exception" size="unknown" status="success"/>
+      <test name="Tests\Feature\ConsultantControllerTest::test_client_esoft_can_filter_consultants_by_name_or_email" size="unknown" status="success"/>
+      <test name="Tests\Feature\ConsultantControllerTest::test_it_returns_error_when_client_esoft_is_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\ConsultantControllerTest::test_it_returns_error_when_role_is_invalid" size="unknown" status="success"/>
+      <test name="Tests\Feature\ForgetPasswordControllerTest::test_check_email_and_send_code_success" size="unknown" status="success"/>
+      <test name="Tests\Feature\ForgetPasswordControllerTest::test_check_email_and_send_code_user_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ForgetPasswordControllerTest::test_validate_code_success" size="unknown" status="success"/>
+      <test name="Tests\Feature\ForgetPasswordControllerTest::test_validate_code_invalid" size="unknown" status="success"/>
+      <test name="Tests\Feature\ForgetPasswordControllerTest::test_reset_password_success" size="unknown" status="success"/>
+      <test name="Tests\Feature\ForgetPasswordControllerTest::test_reset_password_invalid_token" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_user_not_found_when_user_does_not_exist" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_user_not_found_when_client_esoft_does_not_exist" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_filters_managers_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_fails_validation_when_value_is_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_invalid_user_or_role_when_user_is_not_authenticated" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_invalid_user_or_role_when_role_is_not_client_esoft" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_client_esoft_not_found_when_client_record_does_not_exist" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_paginated_managers_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_fails_validation_when_email_is_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_creating_manager_it_returns_user_not_found_when_client_esoft_does_not_exist" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_creates_manager_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_fails_validation_when_required_fields_are_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_404_when_manager_does_not_exist" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_updates_manager_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_when_notifying_managerit_fails_validation_when_email_is_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_user_not_found_if_email_does_not_exist" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_when_getting_manager_profile_datait_fails_validation_when_required_fields_are_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_404_when_manager_user_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_404_when_manager_record_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_manager_profile_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_404_when_manager_does_not_exist_when_deleting" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_403_when_manager_does_not_belong_to_user_client" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_deletes_manager_and_related_projects_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_401_if_user_is_not_manager" size="unknown" status="success"/>
+      <test name="Tests\Feature\ManagerControllerTest::test_it_returns_consultants_for_authenticated_manager" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_can_create_project" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_can_delete_own_project" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_get_projects_fails_when_not_authenticated" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_gets_own_projects" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_consultant_gets_assigned_projects" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_manager_gets_managed_projects" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_can_assign_project_to_manager" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_assign_fails_if_project_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_assign_fails_if_manager_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_assign_returns_null_if_same_manager" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_it_returns_404_if_project_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_it_returns_404_if_manager_not_found" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_it_returns_200_if_manager_is_not_assigned_to_project" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_it_unassigns_manager_from_project_successfully" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_get_all_project_status_returns_all_values" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_get_all_project_status_response_structure" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_get_all_project_status_contains_expected_values" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_can_filter_projects_by_year" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_can_filter_projects_by_month" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_can_filter_projects_by_status" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_can_filter_by_client_b2b" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_can_filter_by_manager_user" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_can_filter_by_consultant_user" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_filter_project_fails_for_non_client_esoft" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_consultant_can_get_paginated_projects" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_client_esoft_can_get_paginated_projects" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_manager_can_get_paginated_projects" size="unknown" status="success"/>
+      <test name="Tests\Feature\ProjectControllerTest::test_it_returns_user_not_found_if_related_role_model_is_missing" size="unknown" status="success"/>
+      <test name="Tests\Feature\UserControllerTest::test_invalid_role_as_admin" size="unknown" status="success"/>
+      <test name="Tests\Feature\UserControllerTest::test_invalid_role_as_concultant" size="unknown" status="success"/>
+      <test name="Tests\Feature\UserControllerTest::test_invalid_user_as_clientesoft" size="unknown" status="success"/>
+      <test name="Tests\Feature\UserControllerTest::test_invalid_user_as_manager" size="unknown" status="success"/>
+      <test name="Tests\Feature\UserControllerTest::test_client_esoft_with_assigned_users" size="unknown" status="success"/>
+      <test name="Tests\Feature\UserControllerTest::test_manager_with_assigned_users" size="unknown" status="success"/>
+      <test name="Tests\Feature\UserControllerTest::test_activate_account_with_missing_token" size="unknown" status="success"/>
+      <test name="Tests\Feature\UserControllerTest::test_activate_account_with_invalid_token" size="unknown" status="success"/>
+      <test name="Tests\Feature\UserControllerTest::test_activate_account_success" size="unknown" status="success"/>
+    </tests>
+    <directory name="/">
+      <totals>
+        <lines total="2222" comments="81" code="2141" executable="1171" executed="591" percent="50.47"/>
+        <methods count="87" tested="37" percent="42.53"/>
+        <functions count="0" tested="0" percent="0"/>
+        <classes count="18" tested="4" percent="22.22"/>
+        <traits count="0" tested="0" percent="0"/>
+      </totals>
+      <directory name="Api">
+        <totals>
+          <lines total="1273" comments="44" code="1229" executable="677" executed="321" percent="47.42"/>
+          <methods count="54" tested="20" percent="37.04"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="11" tested="2" percent="18.18"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="AbsenceController.php" href="Api/AbsenceController.php.xml">
+          <totals>
+            <lines total="209" comments="2" code="207" executable="122" executed="87" percent="71.31"/>
+            <methods count="8" tested="6" percent="75.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="AdminController.php" href="Api/AdminController.php.xml">
+          <totals>
+            <lines total="39" comments="2" code="37" executable="13" executed="12" percent="92.31"/>
+            <methods count="1" tested="0" percent="0.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="ApplicationDataController.php" href="Api/ApplicationDataController.php.xml">
+          <totals>
+            <lines total="42" comments="0" code="42" executable="18" executed="18" percent="100.00"/>
+            <methods count="3" tested="3" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="AuthController.php" href="Api/AuthController.php.xml">
+          <totals>
+            <lines total="93" comments="5" code="88" executable="44" executed="29" percent="65.91"/>
+            <methods count="4" tested="2" percent="50.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="ForgetPasswordController.php" href="Api/ForgetPasswordController.php.xml">
+          <totals>
+            <lines total="68" comments="3" code="65" executable="34" executed="33" percent="97.06"/>
+            <methods count="3" tested="2" percent="66.67"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="JourferiersController.php" href="Api/JourferiersController.php.xml">
+          <totals>
+            <lines total="72" comments="0" code="72" executable="27" executed="0" percent="0.00"/>
+            <methods count="6" tested="0" percent="0.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="LanguageController.php" href="Api/LanguageController.php.xml">
+          <totals>
+            <lines total="34" comments="1" code="33" executable="13" executed="0" percent="0.00"/>
+            <methods count="2" tested="0" percent="0.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="ManagerController.php" href="Api/ManagerController.php.xml">
+          <totals>
+            <lines total="219" comments="15" code="204" executable="120" executed="115" percent="95.83"/>
+            <methods count="8" tested="5" percent="62.50"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="ModuleController.php" href="Api/ModuleController.php.xml">
+          <totals>
+            <lines total="27" comments="0" code="27" executable="3" executed="0" percent="0.00"/>
+            <methods count="2" tested="0" percent="0.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="TimeTrackingController.php" href="Api/TimeTrackingController.php.xml">
+          <totals>
+            <lines total="399" comments="9" code="390" executable="256" executed="0" percent="0.00"/>
+            <methods count="15" tested="0" percent="0.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="UserController.php" href="Api/UserController.php.xml">
+          <totals>
+            <lines total="71" comments="7" code="64" executable="27" executed="27" percent="100.00"/>
+            <methods count="2" tested="2" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <file name="ActivityController.php" href="ActivityController.php.xml">
+        <totals>
+          <lines total="72" comments="7" code="65" executable="28" executed="28" percent="100.00"/>
+          <methods count="4" tested="4" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="1" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+      <file name="ClientB2BController.php" href="ClientB2BController.php.xml">
+        <totals>
+          <lines total="110" comments="0" code="110" executable="58" executed="53" percent="91.38"/>
+          <methods count="6" tested="4" percent="66.67"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="0" percent="0.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+      <file name="ClientEsoftController.php" href="ClientEsoftController.php.xml">
+        <totals>
+          <lines total="41" comments="0" code="41" executable="11" executed="11" percent="100.00"/>
+          <methods count="2" tested="2" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="1" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+      <file name="ConsultantController.php" href="ConsultantController.php.xml">
+        <totals>
+          <lines total="144" comments="5" code="139" executable="78" executed="15" percent="19.23"/>
+          <methods count="5" tested="1" percent="20.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="0" percent="0.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+      <file name="Controller.php" href="Controller.php.xml">
+        <totals>
+          <lines total="13" comments="0" code="13" executable="0" executed="0" percent="0"/>
+          <methods count="0" tested="0" percent="0"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="0" tested="0" percent="0"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+      <file name="FactureController.php" href="FactureController.php.xml">
+        <totals>
+          <lines total="197" comments="9" code="188" executable="108" executed="0" percent="0.00"/>
+          <methods count="5" tested="0" percent="0.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="0" percent="0.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+      <file name="ProfileController.php" href="ProfileController.php.xml">
+        <totals>
+          <lines total="83" comments="5" code="78" executable="41" executed="0" percent="0.00"/>
+          <methods count="3" tested="0" percent="0.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="0" percent="0.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+      <file name="ProjectController.php" href="ProjectController.php.xml">
+        <totals>
+          <lines total="289" comments="11" code="278" executable="170" executed="163" percent="95.88"/>
+          <methods count="8" tested="6" percent="75.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="0" percent="0.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+    </directory>
+  </project>
+</phpunit>

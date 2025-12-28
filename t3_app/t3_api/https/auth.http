@@ -1,0 +1,34 @@
+POST http://127.0.0.1:8009/api/initClientEsoft HTTP/1.1
+content-type: application/json
+Accept: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "SecurePassword123",
+  "password_confirmation": "SecurePassword123",
+  "app_api_key": "aB!9@dE#2_opFg%hK",
+  "user_subscriptionplan_date_start": "2024-01-01",
+  "user_subscriptionplan_date_end": "2024-12-31",
+  "modules": [
+    {
+        "module_name": "CRA",
+        "full_name": "CRA",
+        "description": "Fugiat non tempor excepteur consequat ullamco consectetur elit ullamco. Laboris enim occaecat sint dolor ullamco non eu tempor Lorem proident velit. Anim est deserunt deserunt veniam amet pariatur Lorem. Voluptate aliqua consectetur cillum pariatur.",
+        "subscription_plan_id": 1
+    },
+    {
+        "module_name": "ABS",
+        "full_name": "Absence",
+        "description": "Fugiat non tempor excepteur consequat ullamco consectetur elit ullamco. Laboris enim occaecat sint dolor ullamco non eu tempor Lorem proident velit. Anim est deserunt deserunt veniam amet pariatur Lorem. Voluptate aliqua consectetur cillum pariatur.",
+        "subscription_plan_id": 1
+    },
+    {
+        "module_name": "GFACT",
+        "full_name": "Generation de factire",
+        "description": "Fugiat non tempor excepteur consequat ullamco consectetur elit ullamco. Laboris enim occaecat sint dolor ullamco non eu tempor Lorem proident velit. Anim est deserunt deserunt veniam amet pariatur Lorem. Voluptate aliqua consectetur cillum pariatur.",
+        "subscription_plan_id": 1
+    }
+  ]
+
+}

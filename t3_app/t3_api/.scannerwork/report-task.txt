@@ -1,0 +1,6 @@
+projectKey=t3_api
+serverUrl=http://localhost:9007
+serverVersion=25.11.0.114957
+dashboardUrl=http://localhost:9007/dashboard?id=t3_api
+ceTaskId=aa483fe7-82ad-4697-a713-af9eb5138b1e
+ceTaskUrl=http://localhost:9007/api/ce/task?id=aa483fe7-82ad-4697-a713-af9eb5138b1e

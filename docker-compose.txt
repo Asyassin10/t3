@@ -1,0 +1,105 @@
+services:
+  T3_mysql_service:
+    image: "mysql:latest"
+    restart: always
+    container_name: T3_mysql_service
+    expose:
+      - 3306
+    ports:
+      - "3064:3306"
+    volumes:
+      - "mysql_data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+    networks:
+      - t3_network
+  t3_system:
+    build:
+      context: ./t3_system
+    ports:
+      - "8000:80"
+      - "5577:5577"
+    depends_on:
+      - T3_mysql_service
+    container_name: t3_system
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    networks:
+      - t3_network
+    volumes:
+      - ./t3_system:/var/www/html # Mount Laravel app's directory
+    command: >
+      bash -c "composer install && php artisan migrate --force && php artisan init-database && npm install && npm run build && apache2-foreground"
+    working_dir: /var/www/html
+  t3_api:
+    build:
+      context: ./t3_api
+    ports:
+      - "8009:80"
+    depends_on:
+      - T3_mysql_service
+      - redis
+    container_name: t3_api
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    networks:
+      - t3_network
+    volumes:
+      - ./t3_api:/var/www/html # Mount Laravel app's directory
+    command: >
+      bash -c "composer install && php artisan migrate --force && php artisan init-database"
+    working_dir: /var/www/html
+
+  phpmyadmin:
+    image: "phpmyadmin/phpmyadmin:latest"
+    container_name: T3_phpmyadmin_app_service
+    restart: always
+    ports:
+      - "9898:80"
+    environment:
+      PMA_HOST: T3_mysql_service
+      UPLOAD_LIMIT: 4G
+    depends_on:
+      - T3_mysql_service
+    networks:
+      - t3_network
+
+  redis:
+    image: redis:latest
+    container_name: T3_redis
+    ports:
+      - "6400:6379"
+    networks:
+      - t3_network
+
+  t3_node_pub_sub:
+    build:
+      context: ./t3_node_pub_sub # Directory with the Dockerfile for your Node.js app
+    container_name: t3_node_pub_sub
+    ports:
+      - "4004:4004"
+    depends_on:
+      - redis
+    networks:
+      - t3_network
+    environment:
+      REDIS_HOST: T3_redis
+      REDIS_PORT: 6379
+  t3_ui:
+    build:
+      context: ./t3_ui # Directory with the Dockerfile for your Node.js app
+    container_name: t3_ui
+    ports:
+      - "5177:5177"
+    networks:
+      - t3_network
+
+
+networks:
+  t3_network:
+    driver: bridge
+
+volumes:
+  mysql_data: null

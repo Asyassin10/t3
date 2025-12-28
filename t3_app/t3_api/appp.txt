@@ -1,0 +1,26 @@
+##php artisan test --coverage --coverage-xml=coverage/xml --coverage-html=coverage/html
+php artisan test  --filter=ClientEsoftControllerTest --coverage-html=coverage/html --coverage-clover=coverage/xml/coverage.xml
+
+
+
+
+
+
+php artisan test --filter=TimeTrackingControllerTest \
+  --coverage-html=coverage/html \
+  --coverage-clover=coverage/xml/coverage.xml
+sh
+
+
+
+php artisan test \
+  --coverage-html=coverage/html \
+  --coverage-clover=coverage/xml/coverage.xml
+
+
+
+
+
+
+
+
