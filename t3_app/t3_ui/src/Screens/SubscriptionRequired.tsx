@@ -34,7 +34,7 @@ const SubscriptionRequired: React.FC = () => {
     }
   };
 
-  const handleSubscribe = async (priceId: string) {
+  const handleSubscribe = async (priceId: string) => {
     if (!priceId) {
       setError('This plan is not configured yet. Please contact support.');
       return;
