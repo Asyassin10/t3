@@ -1,10 +1,9 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Signing from "@/Screens/Auth/Signing";
 import Project from "@/Screens/Projects/Project";
 import Page404 from "@/Screens/AppErrors/Page404";
 import AuthProtectedRoute from "./AuthProtectedRoute";
 import SetSchedule from "@/Screens/SetSchedule";
-import LandingPage from "@/Screens/LandingPage";
 import AppLayout from "@/Screens/Layout/AppLayout";
 import Concultant from "@/Screens/Concultants/Concultant";
 import ActivateAccount from "@/Screens/Auth/ActivateAccount";
@@ -46,9 +45,11 @@ function AppRoutes() {
       <Route path={routes.authForgetPassword} element={<SetEmail />} />
       <Route path={routes.authSetCode} element={<SetCode />} />
       <Route path={routes.authSetPwd} element={<SetPwd />} />
-      <Route path="/" element={<AppLayout />}>
-        <Route index element={<LandingPage />} />
 
+      {/* Redirect root to /app */}
+      <Route path="/" element={<Navigate to="/app" replace />} />
+
+      <Route path="/" element={<AppLayout />}>
         <Route path="/app" element={<AuthProtectedRoute><AppNewLayout /> </AuthProtectedRoute>}>
           <Route index element={<DashboardHome />} />
           <Route path="managers" element={<Manager />} />
