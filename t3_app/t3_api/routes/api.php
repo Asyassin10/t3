@@ -69,6 +69,9 @@ Route::middleware(["auth:sanctum", "setLocale"])->group(function () {
 
     // Subscription plans proxy (no payment check required)
     Route::get("/subscription/plans", [SubscriptionController::class, "getPlans"])->name("subscription.plans");
+
+    // Subscription status check (no payment check required)
+    Route::get("/subscription/status", [SubscriptionController::class, "checkStatus"])->name("subscription.status");
 });
 
 // Business logic routes (requires active subscription)
