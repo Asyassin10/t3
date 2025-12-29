@@ -15,9 +15,3 @@ Route::middleware("auth")->group(function () {
     Route::get("subscription-ok/{plan_id}", [ModuleController::class, "HandleSubscriptionSuccess"])->name("HandleSubscriptionSuccess");
     Route::get("subscription-not-ok/{plan_id}", [ModuleController::class, "HandleSubscriptionNotSuccess"])->name("HandleSubscriptionNotSuccess");
 });
-/* Route::get("fffffffffffff", function () {
-    $currentDateTime = Carbon::create(2024, 2, 20);
-    $subscriptionStartDate = Carbon::createFromDate($currentDateTime->year, $currentDateTime->month, $currentDateTime->day)->addYear();
-    return $subscriptionStartDate;
-});
- */
