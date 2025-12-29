@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IconBrandGoogle, IconBrandWindows } from "@tabler/icons-react";
 import {
   Form,
   FormControl,
@@ -171,27 +170,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             <Button className="mt-2" loading={isLoading}>
               Login
             </Button>
-            <hr />
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                className="w-full"
-                type="button"
-                loading={isLoading}
-                leftSection={<IconBrandWindows className="w-4 h-4" />}
-              >
-                Microsoft
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full"
-                type="button"
-                loading={isLoading}
-                leftSection={<IconBrandGoogle className="w-4 h-4" />}
-              >
-                Google
-              </Button>
-            </div>
           </div>
         </form>
       </Form>

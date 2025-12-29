@@ -2,11 +2,8 @@
 import { Card } from '@/shadcnuicomponents/ui/card'
 import { UserAuthForm } from './components/user-auth-form'
 import { LogoauthT3 } from '@/shadcnuicomponents/Icons'
-import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 
 function Signing() {
-    const { t } = useTranslation()
 
     return (
         <>
@@ -23,29 +20,6 @@ function Signing() {
 
                         </div>
                         <UserAuthForm />
-                        <p className=' px-8 text-center text-md font-bold'>
-                            {t("dontYouHaveAnAccount")} ?{" "}
-                            <Link to="/auth/register" className="underline">
-                                {t("signUp")}
-                            </Link>
-                        </p>
-                        <p className='mt-4 px-8 text-center text-sm text-muted-foreground'>
-
-                            <a
-                                href='/terms'
-                                className='underline underline-offset-4 hover:text-primary'
-                            >
-                                Les Conditions générales
-                            </a>{' '}
-                            et {' '}
-                            <a
-                                href='/privacy'
-                                className='underline underline-offset-4 hover:text-primary'
-                            >
-                                La Politique de confidentialité
-                            </a>
-                            .
-                        </p>
                     </Card>
                 </div>
             </div>
